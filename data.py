@@ -8,9 +8,9 @@ from pathlib import Path
 class Label:
     Fist = 0
     Paper = 1
-    Gun = 2
-    HalfHeart = 3
-    Zero = 4
+    Left = 2
+    Right = 3
+    Spider = 4
     Unknown = 5
 
 
@@ -19,12 +19,12 @@ def str_to_label(s):
         return Label.Fist
     elif s.startswith("paper"):
         return Label.Paper
-    elif s.startswith("gun"):
-        return Label.Gun
-    elif s.startswith("half_heart"):
-        return Label.HalfHeart
-    elif s.startswith("zero"):
-        return Label.Zero
+    elif s.startswith("left"):
+        return Label.Left
+    elif s.startswith("right"):
+        return Label.Right
+    elif s.startswith("spider"):
+        return Label.Spider
     else:
         return Label.Unknown
 
@@ -34,12 +34,12 @@ def label_to_str(l):
         return "fist"
     elif l == Label.Paper:
         return "paper"
-    elif l == Label.Gun:
-        return "gun"
-    elif l == Label.HalfHeart:
-        return "halfheart"
-    elif l == Label.Zero:
-        return "zero"
+    elif l == Label.Left:
+        return "Left"
+    elif l == Label.Right:
+        return "Right"
+    elif l == Label.Spider:
+        return "Spider"
     else:
         return "unknown"
 

@@ -73,7 +73,7 @@ for epoch in range(1, 5001):
                 torch.save((model, loss.item()), "model.pth")
                 print("Model saved")
 
-            prev_model, prev_loss = torch.load("model.pth")
+            prev_model, prev_loss = torch.load("model.pth", weights_only=False)
             if loss.item() < prev_loss:
                 torch.save((model, loss.item()), "model.pth")
                 print("Model saved")

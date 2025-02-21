@@ -6,22 +6,25 @@ from data import Label
 from knn import Classifier
 import torch
 
+from data import label_to_str
+
 from pyomyo import Myo, emg_mode
 
 from pynput import keyboard, mouse
 
 
 def handle_prediction(pred):
-    if pred == Label.Fist:
-        mouse.Controller().move(-10, 0)
-    elif pred == Label.Paper:
-        mouse.Controller().move(10, 0)
-    elif pred == Label.HalfHeart:
-        mouse.Controller().move(0, -10)
-    elif pred == Label.Zero:
-        mouse.Controller().move(0, 10)
-    elif pred == Label.Gun:
-        mouse.Controller().click(mouse.Button.left)
+    # if pred == Label.Fist:
+    #     mouse.Controller().move(-100, 0)
+    # elif pred == Label.Paper:
+    #     mouse.Controller().move(100, 0)
+    # elif pred == Label.HalfHeart:
+    #     mouse.Controller().move(0, -100)
+    # elif pred == Label.Zero:
+    #     mouse.Controller().move(0, 100)
+    # elif pred == Label.Gun:
+    #     mouse.Controller().click(mouse.Button.left)
+    print(label_to_str(pred))
 
 
 def run_predictor(seconds, mode):
@@ -32,7 +35,7 @@ def run_predictor(seconds, mode):
     cls = Classifier(
         np.load("data/samples.npy"),
         np.load("data/labels.npy").squeeze(),
-        torch.load("model.pth")[0][:3],
+        torch.load("model.pth", weights_only=False)[0][:3],
     )
 
     m = Myo(mode=mode)
@@ -75,6 +78,6 @@ def run_predictor(seconds, mode):
 
 
 if __name__ == "__main__":
-    seconds = 0.5
+    seconds = 10000
     mode = emg_mode.PREPROCESSED
     run_predictor(seconds, mode)
