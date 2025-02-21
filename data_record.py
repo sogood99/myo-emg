@@ -65,8 +65,9 @@ def data_worker(mode, seconds, filepath):
 # -------- Main Program Loop -----------
 if __name__ == "__main__":
     run_name = sys.argv[1]
+    subname = sys.argv[2]
     seconds = 10
-    file_name = f"{run_name}.csv"
+    file_name = f"{run_name}_{subname}.csv"
     mode = emg_mode.PREPROCESSED
     p = multiprocessing.Process(target=data_worker, args=(mode, seconds, file_name))
     p.start()

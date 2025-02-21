@@ -14,16 +14,22 @@ from pynput import keyboard, mouse
 
 
 def handle_prediction(pred):
-    # if pred == Label.Fist:
-    #     mouse.Controller().move(-100, 0)
+    # if pred == Label.Left:
+    #     keyboard.Controller().press(keyboard.Key.space)
+    #     keyboard.Controller().release(keyboard.Key.space)
+    # elif pred == Label.Right:
+    #     keyboard.Controller().press(keyboard.Key.backspace)
+    #     keyboard.Controller().release(keyboard.Key.backspace)
+    # elif pred == Label.Fist:
+    #     keyboard.Controller().press(keyboard.Key.enter)
+    #     keyboard.Controller().release(keyboard.Key.enter)
     # elif pred == Label.Paper:
-    #     mouse.Controller().move(100, 0)
-    # elif pred == Label.HalfHeart:
-    #     mouse.Controller().move(0, -100)
-    # elif pred == Label.Zero:
-    #     mouse.Controller().move(0, 100)
-    # elif pred == Label.Gun:
-    #     mouse.Controller().click(mouse.Button.left)
+    #     keyboard.Controller().press(keyboard.KeyCode.from_char("a"))
+    #     keyboard.Controller().release(keyboard.KeyCode.from_char("a"))
+    # elif pred == Label.Spider:
+    #     keyboard.Controller().press(keyboard.KeyCode.from_char("b"))
+    #     keyboard.Controller().release(keyboard.KeyCode.from_char("b"))
+
     print(label_to_str(pred))
 
 

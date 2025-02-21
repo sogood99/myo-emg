@@ -25,7 +25,7 @@ class Classifier:
 
         mean_distance = np.mean(distances[0], axis=1)
 
-        # self.threshold = np.percentile(mean_distance, 85)
+        # self.threshold = np.percentile(mean_distance, 95) + 3 * np.std(mean_distance)
         self.threshold = 1000
 
     def predict(self, X):

@@ -4,6 +4,8 @@ import os
 import pandas as pd
 from pathlib import Path
 
+import sys
+
 
 class Label:
     Fist = 0
@@ -45,13 +47,13 @@ def label_to_str(l):
 
 
 if __name__ == "__main__":
-    data = os.listdir("raw_data")
+    data = os.listdir(sys.argv[1])
 
     X = []
     Y = []
 
     for d in data:
-        df = pd.read_csv(Path("raw_data") / d)
+        df = pd.read_csv(Path(sys.argv[1]) / d)
         label = str_to_label(d)
         print(d, label)
 
@@ -72,7 +74,7 @@ if __name__ == "__main__":
         print(dt)
 
         if label == Label.Unknown:
-            np.save(Path("data") / f"unknown.npy", dt)
+            np.save(Path(sys.argv[2]) / f"unknown.npy", dt)
         else:
             X += [dt]
             Y += [y]
@@ -81,8 +83,8 @@ if __name__ == "__main__":
     Y = np.concatenate(Y)
 
     # pickle the data
-    np.save(Path("data") / f"samples.npy", X)
-    np.save(Path("data") / f"labels.npy", Y)
+    np.save(Path(sys.argv[2]) / f"samples.npy", X)
+    np.save(Path(sys.argv[2]) / f"labels.npy", Y)
     print("Data saved")
     print(X.shape)
     print(Y.shape)
