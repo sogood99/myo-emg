@@ -32,7 +32,7 @@ plt.savefig("fig/tsne_data.png")
 plt.show()
 
 
-model, _ = torch.load("model.pth")
+model, _ = torch.load("model.pth", weights_only=False)
 model.eval()
 
 X = torch.tensor(X, dtype=torch.float32)
