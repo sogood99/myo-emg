@@ -13,15 +13,10 @@ cls = Classifier(
     torch.load("model.pth", weights_only=False)[0][:3],
 )
 
-test_data = os.listdir("test_data")
+X_test = np.load("test_data/samples.npy")
+y_test = np.load("test_data/labels.npy").squeeze()
 
-X = []
-y = []
+y_pred = cls.predict(X_test)
 
-for file in test_data:
-    df = pd.read_csv(Path("test_data") / file)
-    X.append(df.to_numpy())
-    label = str_to_label(file)
-    y += [label] * len
-
-    print(df)
+accuracy = np.mean(y_pred == y_test)
+print(accuracy)
